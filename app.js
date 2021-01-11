@@ -1,13 +1,13 @@
 require('dotenv').config();
+
 const mongoose = require('mongoose');
 const express = require('express')
 const app = express();
 const bodyParser = require('body-parser')  //for middleware
 const cookieParser = require('cookie-parser')  //for middleware
 const cors = require('cors')       //for middleware
-const router = require('router')
 
-
+const authRoutes = require("./routes/auth")
 
 //DB Connections
 mongoose.connect(process.env.DATABASE,{
