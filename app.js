@@ -22,7 +22,7 @@ mongoose.connect(process.env.DATABASE,{
 
 
 //Middlewares
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
