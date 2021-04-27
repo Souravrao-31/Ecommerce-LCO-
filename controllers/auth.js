@@ -1,6 +1,6 @@
 //going to routes 
 const User = require('../models/user')
-
+const {  validationResult } = require('express-validator');
 
 exports.signup = (req, res) => {
    
@@ -10,6 +10,13 @@ exports.signup = (req, res) => {
 //         message: " sign in...PP"
 //     });
 
+
+  const errors = validationResult(req) 
+  if(!errors.isEmpty() ){
+      return res.status(422).json({
+          error : errors.array()[0].msg
+      })
+  }
  const user = new User(req.body) //saving in database
    user.save( (err, user) => {
        if(err){
